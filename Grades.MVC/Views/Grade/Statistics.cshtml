@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Grades.MVC.Models.GradeSum>
+@{
+    ViewBag.Title = "Statistics";
+}
+
+<h2>Statistics</h2>
+
+@ViewBag.InfoMessage
+
+<h6>Top 5 students</h6>
+<table class="table">
+    @foreach (var item in Model.Take(5))
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentDocumentId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Value)
+            </td>
+        </tr>
+    }
+</table>
+
+<h6>Bottom 5 students</h6>
+<table class="table">
+    @foreach (var item in Model.Skip(Math.Max(0, Model.Count() - 5)))
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentDocumentId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Value)
+            </td>
+        </tr>
+    }
+</table>

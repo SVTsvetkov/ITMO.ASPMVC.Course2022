@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Grades.MVC.Models.StudentWithGrades>
+
+@if (Model.Any())
+{
+    <table class="table">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StudentName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StudentDocumentId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Grade)
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.GradeId })
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+
+else
+{
+    <h6>No registered grades</h6>
+}

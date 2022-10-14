@@ -1,0 +1,36 @@
+﻿@model Lab4.WebMVCR1.Models.Person
+
+@{ Layout = "~/Views/_BasicLayout.cshtml"; ViewBag.Title = "Главная"; }
+<div> @ViewBag.Greeting, спасибо, что зашли <p> @Html.ActionLink("Введите имя", "InputData") </p> </div>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>InputData</title>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm())
+        {
+            <table>
+                <tr>
+                    <td><p>Введите имя:</p></td>
+                    <td>@Html.TextBox("FirstName")</td>
+                </tr>
+                <tr>
+                    <td><p>Введите фамилию:</p></td>
+                    <td>@Html.TextBoxFor(x => x.LastName)</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit" value="Отправить" />
+                    </td>
+                    <td></td>
+                </tr>
+            </table>
+        }
+    </div>
+</body>
+</html>

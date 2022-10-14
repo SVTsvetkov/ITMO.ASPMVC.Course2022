@@ -1,0 +1,24 @@
+﻿@model IEnumerable<Grades.MVC.Models.Discipline>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Grades by discipline</h2>
+
+@TempData["ErrorMessage"]
+@ViewBag.InfoMessage
+<p>
+    @Html.ActionLink("Register New", "Register")
+</p>
+
+<div>
+    @using (Ajax.BeginForm("FindByDiscipline", new AjaxOptions
+    {
+        UpdateTargetId = "results"
+    }))
+    {
+        @Html.DropDownList("id", Model.Select(x => new SelectListItem { Text = x.Name, Value = x.DisciplineId.ToString() }).ToList(), "---Select---", new { @class = "form-control" })
+        <input type="submit" value="View grades" />
+    }
+    <div id="results"> </div>
+</div>
